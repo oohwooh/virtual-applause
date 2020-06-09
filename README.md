@@ -1,2 +1,2 @@
 # virtual-applause
-Round of applause system for virtual presentations
+![Please Clap](pleaseClap.gif)
