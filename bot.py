@@ -32,7 +32,7 @@ def clap_worker(vc, queue):
             try:
                 print('clap')
                 clap = queue.get_nowait()
-                vc.play(clap, after=queue.task_done())
+                vc.play(discord.FFmpegPCMAudio(clap), after=queue.task_done())
             except:
                 pass
     print('worker destroyed')
@@ -62,12 +62,12 @@ async def connect(ctx):
 async def on_message(message):
     triggers = ['clap',':clap:','👏']
     if any(trigger in message.content.lower() for trigger in triggers):
-        claps.put_nowait(discord.FFmpegPCMAudio(random.choice(files)))
+        claps.put_nowait(random.choice(files))
         await message.add_reaction('👏')
 
     triggers = ['carp',':fish:','🐟']
     if any(trigger in message.content.lower() for trigger in triggers):
-        claps.put_nowait(discord.FFmpegPCMAudio(random.choice(files)))
+        claps.put_nowait(random.choice(files))
         await message.add_reaction('🐟')
     await bot.process_commands(message)
 
@@ -76,7 +76,7 @@ async def on_message(message):
 async def on_raw_reaction_add(payload):
     if str(payload.emoji) == '👏':
         for i in range(random.randint(1,5)):
-            claps.put_nowait(discord.FFmpegPCMAudio(random.choice(files)))
+            claps.put_nowait(random.choice(files))
 
 
 @bot.event
