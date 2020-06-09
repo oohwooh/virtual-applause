@@ -5,6 +5,7 @@ import discord
 import queue
 import asyncio
 import threading
+import time
 
 from discord.ext import commands
 
@@ -26,6 +27,7 @@ def clap_worker(vc, queue):
     # vc = message.guild.voice_client
     # clap = discord.FFmpegPCMAudio(random.choice(files))
     while vc:
+        time.sleep(1)
         if not vc.is_playing() and not queue.empty():
             try:
                 print('clap')
