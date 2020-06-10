@@ -30,7 +30,6 @@ def clap_worker(vc, queue):
     while vc.is_connected():
         if not vc.is_playing() and not queue.empty():
             try:
-                print('clap')
                 clap = queue.get_nowait()
                 vc.play(discord.FFmpegPCMAudio(clap), after=queue.task_done())
             except:
