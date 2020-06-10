@@ -26,7 +26,7 @@ def clap_worker(vc, queue):
 
     # vc = message.guild.voice_client
     # clap = discord.FFmpegPCMAudio(random.choice(files))
-    while vc:
+    while vc.is_connected():
         time.sleep(1)
         if not vc.is_playing() and not queue.empty():
             try:
