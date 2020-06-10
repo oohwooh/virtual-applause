@@ -29,7 +29,7 @@ def clap_worker(vc, queue):
     # clap = discord.FFmpegPCMAudio(random.choice(files))
     while vc.is_connected():
         time.sleep(1)
-        if not vc.is_playing() and not queue.empty():
+        while not vc.is_playing() and not queue.empty():
             try:
                 print('clap')
                 clap = queue.get_nowait()
