@@ -29,14 +29,14 @@ def clap_worker(vc, queue):
     # vc = message.guild.voice_client
     # clap = discord.FFmpegPCMAudio(random.choice(files))
     while vc.is_connected():
-        time.sleep(1)
-        while not vc.is_playing() and not queue.empty():
+        if not vc.is_playing() and not queue.empty():
             try:
-                print('clap')
                 clap = queue.get_nowait()
                 vc.play(discord.FFmpegPCMAudio(clap), after=queue.task_done())
             except:
                 pass
+        else:
+            time.sleep(1)
     print('worker destroyed')
 
 
