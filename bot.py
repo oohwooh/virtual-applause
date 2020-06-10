@@ -10,6 +10,7 @@ import time
 from discord.ext import commands
 
 crabs = ['./crabs'+f for f in os.listdir('./crabs')]
+carps = ['./craps'+f for f in os.listdir('./craps')]
 files = ['./claps/'+f for f in os.listdir('./claps')]
 
 claps = queue.Queue()
@@ -68,7 +69,7 @@ async def on_message(message):
 
     triggers = ['carp',':fish:','🐟']
     if any(trigger in message.content.lower() for trigger in triggers):
-        claps.put_nowait(random.choice(files))
+        claps.put_nowait(random.choice(carps))
         await message.add_reaction('🐟')
 
     triggers = ['crab', ':crab:', '🦀']
