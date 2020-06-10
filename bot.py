@@ -9,7 +9,7 @@ import time
 
 from discord.ext import commands
 
-crabs = ['./crabs'+f for f in os.listdir('./crabs')]
+crabs = ['./crabs/'+f for f in os.listdir('./crabs')]
 files = ['./claps/'+f for f in os.listdir('./claps')]
 
 claps = queue.Queue()
