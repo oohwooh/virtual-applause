@@ -31,7 +31,6 @@ async def connect(ctx):
     vc.play(audio)
 
 
-
 @bot.event
 async def on_message(message):
     triggers = ['clap',':clap:','👏']
@@ -46,8 +45,17 @@ async def on_message(message):
 
     await bot.process_commands(message)
 
+
 @bot.event
 async def on_raw_reaction_add(payload):
+    if str(payload.emoji) == '👏' and payload.user_id != bot.user_id:
+        clap()
+
+
+@bot.event
+async def on_raw_reaction_remove(payload):
     if str(payload.emoji) == '👏':
         clap()
+
+
 bot.run(os.getenv('BOT_TOKEN'))
