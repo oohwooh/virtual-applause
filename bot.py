@@ -20,9 +20,9 @@ def clap():
     audio.add_stream(discord.FFmpegPCMAudio(random.choice(claps)))
 
 
-def carp()
-  global audio
-  audio.add_stream(discord.FFmpegPCMAudio(random.choice(carps)))
+def carp():
+    global audio
+    audio.add_stream(discord.FFmpegPCMAudio(random.choice(carps)))
 
 
 @bot.command()
