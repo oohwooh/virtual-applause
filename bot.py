@@ -48,7 +48,7 @@ async def on_message(message):
 
 @bot.event
 async def on_raw_reaction_add(payload):
-    if str(payload.emoji) == '👏' and payload.user_id != bot.user_id:
+    if str(payload.emoji) == '👏' and payload.user_id != bot.user.id:
         clap()
 
 
