@@ -18,7 +18,6 @@ class MixedAudioSource(AudioSource):
                     if len(in_bytes) == 0:
                         return b"\0" * 3840
                 elif len(tbytes) < 3840:
-                    print(tbytes)
                     len_diff = 3840 - len(stream)
                     tbytes += "\0" * len_diff
                     in_bytes.append(tbytes)
