@@ -5,7 +5,8 @@ import discord
 from audio import MixedAudioSource
 from discord.ext import commands
 
-files = ['./claps/'+f for f in os.listdir('./claps')]
+carps = ['./carps/'+f for f in os.listdir('./carps')]
+claps = ['./claps/'+f for f in os.listdir('./claps')]
 
 bot = commands.Bot(command_prefix='cl!')
 logging.basicConfig(level=logging.INFO)
@@ -16,7 +17,12 @@ audio = MixedAudioSource()
 
 def clap():
     global audio
-    audio.add_stream(discord.FFmpegPCMAudio(random.choice(files)))
+    audio.add_stream(discord.FFmpegPCMAudio(random.choice(claps)))
+
+
+def carp()
+  global audio
+  audio.add_stream(discord.FFmpegPCMAudio(random.choice(carps)))
 
 
 @bot.command()
@@ -37,7 +43,7 @@ async def on_message(message):
 
     triggers = ['carp',':fish:','🐟']
     if any(trigger in message.content.lower() for trigger in triggers):
-        clap()
+        carp()
         await message.add_reaction('🐟')
 
     await bot.process_commands(message)
