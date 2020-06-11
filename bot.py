@@ -2,8 +2,6 @@ import os
 import random
 import logging
 import discord
-import queue
-import asyncio
 from audio import MixedAudioSource
 from discord.ext import commands
 
