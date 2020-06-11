@@ -33,4 +33,5 @@ class Core(commands.Cog):
                 await self.disconnect()
 
     def add_stream(self, file):
-        self.audio.add_stream(discord.FFmpegPCMAudio(file))
+        if self.vc is not None:
+            self.audio.add_stream(discord.FFmpegPCMAudio(file))
