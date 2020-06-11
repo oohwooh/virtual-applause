@@ -13,8 +13,8 @@ class Clap(commands.Cog):
     def play(self, message=None):
         if self.core.vc is not None:
             self.core.add_stream(random.choice(self.files))
-            if message:
-                await message.add_reaction(self.emoji)
+            return True
+        return False
 
     @commands.Cog.listener
     async def on_raw_reaction_add(self, payload):
@@ -30,4 +30,5 @@ class Clap(commands.Cog):
     async def on_message(self, message):
         triggers = ['clap', self.emoji]
         if any(trigger in message.content.lower() for trigger in triggers):
-            self.play(message)
+            if self.play():
+                await message.add_reaction(self.emoji)
