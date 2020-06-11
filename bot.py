@@ -22,7 +22,7 @@ def clap():
 
 def carp():
     global audio
-    audio.add_stream(discord.FFmpegPCMAudio(random.choice(carps)))
+
 
 
 
@@ -43,22 +43,6 @@ async def on_message(message):
             carp()
             await message.add_reaction('🐟')
     await bot.process_commands(message)
-
-
-@bot.event
-async def on_raw_reaction_add(payload):
-    if str(payload.emoji) == '👏' and payload.user_id != bot.user.id:
-        global vc
-        if vc is not None:
-            clap()
-
-
-@bot.event
-async def on_raw_reaction_remove(payload):
-    if str(payload.emoji) == '👏':
-        global vc
-        if vc is not None:
-            clap()
 
 
 
