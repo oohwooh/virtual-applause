@@ -34,6 +34,13 @@ async def connect(ctx):
     vc.play(audio)
 
 
+@bot.command()
+async def disconnect(ctx):
+    global vc
+    await vc.disconnect()
+    vc = None
+
+
 @bot.event
 async def on_message(message):
     triggers = ['clap',':clap:','👏']
