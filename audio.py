@@ -32,4 +32,3 @@ class MixedAudioSource(AudioSource):
 
     def add_stream(self, stream):
         self.streams.append(stream)
-        print(self.streams)
