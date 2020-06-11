@@ -25,20 +25,6 @@ def carp():
     audio.add_stream(discord.FFmpegPCMAudio(random.choice(carps)))
 
 
-@bot.command()
-async def connect(ctx):
-    global vc
-    global audio
-    print('connecting')
-    vc = await ctx.message.author.voice.channel.connect()
-    vc.play(audio)
-
-
-@bot.command()
-async def disconnect(ctx=None):
-    global vc
-    await vc.disconnect()
-    vc = None
 
 
 @bot.event
@@ -75,11 +61,5 @@ async def on_raw_reaction_remove(payload):
             clap()
 
 
-@bot.event
-async def on_voice_state_update(member, before, after):
-    global vc
-    if vc is not None:
-        if len(vc.channel.members) <= 1:
-            await disconnect()
 
 bot.run(os.getenv('BOT_TOKEN'))
