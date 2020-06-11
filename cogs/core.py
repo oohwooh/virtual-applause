@@ -24,7 +24,7 @@ class Core(commands.Cog):
     async def disconnect(self, ctx: commands.context.Context = None):
         if self.vc is not None:
             await self.vc.disconnect()
-            vc = None
+            self.vc = None
 
     @commands.Cog.listener()
     async def on_voice_state_update(self, member, before, after):
