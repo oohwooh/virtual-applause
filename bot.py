@@ -17,7 +17,7 @@ vc = None
 audio = MixedAudioSource()
 
 
-def clap(num=1):
+def clap():
     global audio
     audio.add_stream(discord.FFmpegPCMAudio(random.choice(files)))
 
@@ -46,5 +46,8 @@ async def on_message(message):
 
     await bot.process_commands(message)
 
-
+@bot.event
+async def on_raw_reaction_add(payload):
+    if str(payload.emoji) == '👏':
+        clap()
 bot.run(os.getenv('BOT_TOKEN'))
