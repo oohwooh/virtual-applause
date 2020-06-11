@@ -10,7 +10,7 @@ class Clap(commands.Cog):
         self.files = ['./claps/'+f for f in os.listdir('./claps')]
         self.emoji = '👏'
 
-    def play(self, message=None):
+    def play(self):
         if self.core.vc is not None:
             self.core.add_stream(random.choice(self.files))
             return True
