@@ -35,3 +35,7 @@ class Core(commands.Cog):
     def add_stream(self, file):
         if self.vc is not None:
             self.audio.add_stream(discord.FFmpegPCMAudio(file))
+
+
+def setup(bot):
+    bot.add_cog(Core(bot))
