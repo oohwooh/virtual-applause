@@ -32,3 +32,7 @@ class Clap(commands.Cog):
         if any(trigger in message.content.lower() for trigger in triggers):
             if self.play():
                 await message.add_reaction(self.emoji)
+
+
+def setup(bot):
+    bot.add_cog(Clap(bot))
