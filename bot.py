@@ -5,7 +5,6 @@ import discord
 from audio import MixedAudioSource
 from discord.ext import commands
 
-crabs = ['./crabs/'+f for f in os.listdir('./crabs')]
 files = ['./claps/'+f for f in os.listdir('./claps')]
 
 bot = commands.Bot(command_prefix='cl!')
