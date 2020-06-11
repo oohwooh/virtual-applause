@@ -10,21 +10,41 @@ from discord.ext import commands
 crabs = ['./crabs/'+f for f in os.listdir('./crabs')]
 files = ['./claps/'+f for f in os.listdir('./claps')]
 
-claps = queue.Queue()
-loop = asyncio.get_event_loop()
-
 bot = commands.Bot(command_prefix='cl!')
 logging.basicConfig(level=logging.INFO)
 
 vc = None
+audio = MixedAudioSource()
+
+
+def clap(num=1):
+    global audio
+    audio.add_stream(discord.FFmpegPCMAudio(random.choice(files)))
+
+
 @bot.command()
 async def connect(ctx):
     global vc
+    global audio
     print('connecting')
     vc = await ctx.message.author.voice.channel.connect()
+    vc.play(audio)
 
 
-@bot.command()
-async def test_mixing(ctx):
-    vc.play(MixedAudioSource(discord.FFmpegPCMAudio(random.choice(files)), discord.FFmpegPCMAudio(random.choice(files))))
+
+@bot.event
+async def on_message(message):
+    triggers = ['clap',':clap:','👏']
+    if any(trigger in message.content.lower() for trigger in triggers):
+        clap()
+        await message.add_reaction('👏')
+
+    triggers = ['carp',':fish:','🐟']
+    if any(trigger in message.content.lower() for trigger in triggers):
+        clap()
+        await message.add_reaction('🐟')
+
+    await bot.process_commands(message)
+
+
 bot.run(os.getenv('BOT_TOKEN'))
