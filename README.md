@@ -29,3 +29,7 @@ send a message with the word "clap" in it. If the bot is connected to a voice ch
 The `cl!connect` command connects the bot to your current channel, for clapping.
 ##### How to disconnect from a voice channel:
 The `cl!disconnect` command disconnects the bot from it's connected channel. The bot will also automatically disconnect if it is left alone in a channel
+
+
+######Customization:
+see [CONTRIBUTING.md](CONTRIBUTING.md)
