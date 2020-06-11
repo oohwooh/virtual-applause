@@ -39,5 +39,5 @@ class Core(commands.Cog):
 
 def setup(bot):
     bot.add_cog(Core(bot))
-    bot.add_cog(clapTemplate.genCog(bot, 'clap', 'claps', '👏'))
-    bot.add_cog(clapTemplate.genCog(bot, 'carp', 'carps', '🐟'))
+    bot.add_cog(clapTemplate.genCog(bot, 'clap', 'audio/claps', '👏'))
+    bot.add_cog(clapTemplate.genCog(bot, 'carp', 'audio/carps', '🐟'))
