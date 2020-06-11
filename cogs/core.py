@@ -3,6 +3,7 @@ from discord.ext import commands
 from audio import MixedAudioSource
 from templates import clapTemplate
 
+
 class Core(commands.Cog):
     def __init__(self, bot):
         self.bot = bot
