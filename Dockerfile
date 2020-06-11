@@ -6,7 +6,7 @@ COPY requirements.txt /
 RUN pip install -r /requirements.txt
 
 COPY claps /app/claps
-COPY crabs /app/crabs
+COPY carps /app/carps
 COPY bot.py /app/bot.py
 WORKDIR /app
 CMD ["python3", "bot.py"]
