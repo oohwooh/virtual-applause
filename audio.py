@@ -15,6 +15,8 @@ class MixedAudioSource(AudioSource):
                 tbytes = stream.read()
                 if tbytes == b'':
                     self.streams.remove(stream)
+                    if len(in_bytes) == 0:
+                        return b"\0" * 3840
                 elif len(tbytes) < 3840:
                     print(tbytes)
                     len_diff = 3840 - len(stream)
@@ -26,7 +28,8 @@ class MixedAudioSource(AudioSource):
                 total = int(sum([int.from_bytes((byte[i],byte[i+1]), byteorder='little') for byte in in_bytes]) / len(in_bytes))
                 out_bytes += total.to_bytes(2, byteorder='little')
             return out_bytes
-        return '\0' * 3840
+        return b"\0" * 3840
 
     def add_stream(self, stream):
         self.streams.append(stream)
+        print(self.streams)
