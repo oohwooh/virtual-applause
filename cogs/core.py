@@ -1,6 +1,6 @@
 import discord
 from discord.ext import commands
-from ..audio import MixedAudioSource
+from audio import MixedAudioSource
 
 
 class Core(commands.Cog):
