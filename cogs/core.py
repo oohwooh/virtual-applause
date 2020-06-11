@@ -4,7 +4,7 @@ from audio import MixedAudioSource
 
 
 class Core(commands.Cog):
-    def __init__(self, bot, audio):
+    def __init__(self, bot):
         self.bot = bot
         self.vc = None
         self.audio = MixedAudioSource()
