@@ -1,9 +1,10 @@
-from ..audio import MixedAudioSource
+import discord
 from discord.ext import commands
+from ..audio import MixedAudioSource
 
 
 class Core(commands.Cog):
-    def __init__(self, bot):
+    def __init__(self, bot, audio):
         self.bot = bot
         self.vc = None
         self.audio = MixedAudioSource()
@@ -30,3 +31,6 @@ class Core(commands.Cog):
         if self.vc is not None:
             if len(self.vc.channel.members) <= 1:
                 await self.disconnect()
+
+    def add_stream(self, file):
+        self.audio.add_stream(discord.FFmpegPCMAudio(file))
