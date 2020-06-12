@@ -10,12 +10,6 @@ class Core(commands.Cog):
         self.vc = None
         self.audio = MixedAudioSource()
 
-    @commands.Cog.listener()
-    async def on_member_join(self, member):
-        channel = member.guild.system_channel
-        if channel is not None:
-            await channel.send('Welcome {0.mention}.'.format(member))
-
     @commands.command()
     async def connect(self, ctx: commands.context.Context):
         self.vc = await ctx.message.author.voice.channel.connect()
